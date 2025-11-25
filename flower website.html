@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flower Shop</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            background: #fff;
+            color: #333;
+        }
+
+        /* HEADER */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            padding: 15px 40px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+        }
+
+        nav a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: #e91e63;
+        }
+
+        /* HERO */
+        .hero {
+            height: 70vh;
+            background: url("https://images.unsplash.com/photo-1468327768560-75b778cbb551") 
+                center/cover no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-content {
+            background: rgba(255, 255, 255, 0.85);
+            padding: 40px;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .hero h2 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        /* BUTTON */
+        .btn {
+            display: inline-block;
+            background: #e91e63;
+            padding: 10px 20px;
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background: #d81b60;
+        }
+
+        /* PRODUCTS */
+        .products {
+            padding: 50px;
+            text-align: center;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .product-card {
+            background: #fafafa;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+
+        .price {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+
+        /* CART */
+        .cart {
+            padding: 40px;
+            background: #fff6f9;
+        }
+
+        .cart ul {
+            list-style: none;
+            padding: 10px 0;
+        }
+
+        .cart li {
+            padding: 8px 0;
+            border-bottom: 1px solid #ddd;
+            font-size: 16px;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <h1 class="logo">Garden of Blooms</h1>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#products">Flowers</a>
+            <a href="#cart">Cart (<span id="cart-count">0</span>)</a>
+            <a href="#contact us">contact us</a>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero"id="home">
+        <div class="hero-content">
+            <h2>Fresh Flowers For Every Occasion</h2>
+            <p>Hand-picked. Beautiful. Delivered with love.</p>
+            <a class="btn" href="#products">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- PRODUCTS SECTION -->
+    <section class="products" id="products">
+        <h2>Our Bestselling Flowers</h2>
+
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="https://th.bing.com/th/id/OIP.uCixHbRVcWK1IB-_BTIBtAAAAA?w=163&h=150&c=6&o=7&cb=ucfimg2&dpr=1.3&pid=1.7&rm=3&ucfimg=1" alt="Red Roses">
+                <h3>Red Roses</h3>
+                <p class="price">$29.99</p>
+                <button class="btn" onclick="addToCart('Red Roses', 29.99)">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <img src="https://th.bing.com/th/id/OIP.c-QgljK6yCVoAWFkHuGNawHaEK?w=306&h=180&c=7&r=0&o=7&cb=ucfimg2&dpr=1.3&pid=1.7&rm=3&ucfimg=1" alt="Pink Tulips">
+                <h3>Pink Tulips</h3>
+                <p class="price">$24.99</p>
+                <button class="btn" onclick="addToCart('Pink Tulips', 24.99)">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <img src="https://th.bing.com/th/id/OIP.RcsByqTc-ErumqvEEZxHQgHaLH?w=204&h=306&c=7&r=0&o=7&cb=ucfimg2&dpr=1.3&pid=1.7&rm=3&ucfimg=1" alt="Sunflowers">
+                <h3>Sunflower Bouquet</h3>
+                <p class="price">$19.99</p>
+                <button class="btn" onclick="addToCart('Sunflower Bouquet', 19.99)">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://th.bing.com/th/id/OIP.Z37PGvWeoXvJeOQZNfmVYgHaEM?w=227&h=180&c=7&r=0&o=7&cb=ucfimg2&dpr=1.3&pid=1.7&rm=3&ucfimg=1" alt="Gerbera Daisy">
+                <h3>Gerbera Daisy</h3>
+                <p class="price">$34.15</p>
+                <button class="btn" onclick="addtoCart('Gerbera Daisy', 34.15)">Add to cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://th.bing.com/th/id/OIP.D5wSHI8iTXV0jWu9A3SB8gHaJk?w=122&h=180&c=7&r=0&o=7&cb=ucfimg2&dpr=1.3&pid=1.7&rm=3&ucfimg=1" alt="plumeria">
+                <h3>plumeria</h3>
+                <p class="price">$20.99</p>
+                <button class="btn" onclick="addToCart('plumeria', 20.99)">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://i.pinimg.com/originals/c2/29/dd/c229dd69f96494a076a910437ec5ebbb.jpg" alt="Lotus">
+                <h3>Lotus</h3>
+                <p class="price">$50.25</p>
+                <button class="btn" onclick="addToCart('Lotus', 20.99)">Add to Cart</button>
+            </div>
+             <div class="product-card">
+                <img src="https://th.bing.com/th/id/OIP.4MuFWjcWsh6TWneClDUjNwHaFj?w=236&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Hibiscus">
+                <h3>Hibiscus</h3>
+                <p class="price">$15.56</p>
+                <button class="btn" onclick="addToCart('Hibiscus',15.56)">Add to Cart</button>
+            </div>
+                <div class="product-card">
+                <img src="https://th.bing.com/th/id/OIP.3vfI1CwoV3IGNvT0OI285gHaFh?w=228&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Jasmine">
+                <h3>Jasmine</h3>
+                <p class="price">$25.80</p>
+                <button class="btn" onclick="addToCart('Jasmine', 25.80)">Add to Cart</button>
+            </div>
+                <div class="product-card">
+                <img src="https://th.bing.com/th/id/OIP.bx1N4X8svpc4yVCZOOjIMAHaE8?w=276&h=184&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="lily">
+                <h3>lily</h3>
+                <p class="price">$25.80</p>
+                <button class="btn" onclick="addToCart('lily', 59.67)">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://th.bing.com/th/id/OIP.udEhMMxN5Ib4_1lD_YVTxwHaE8?w=286&h=192&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="carnation">
+                <h3>carnation</h3>
+                <p class="price">$30.80</p>
+                <button class="btn" onclick="addToCart('carnation', 30.80)">Add to Cart</button>
+            </div>
+             </div>
+        </div>
+    </section>
+
+    <!-- CART -->
+    <section class="cart" id="cart">
+        <h2>Your Cart</h2>
+
+        <ul id="cart-items"></ul>
+
+        <h3>Total: $<span id="total">0.00</span></h3>
+    </section>
+
+    <footer>
+        <p>Thank you for visiting this website</p>
+    </footer>
+
+    <script>
+        let cart = [];
+        let total = 0;
+
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            total += price;
+            updateCart();
+        }
+
+        function updateCart() {
+            const itemsList = document.getElementById("cart-items");
+            const totalDisplay = document.getElementById("total");
+            const countDisplay = document.getElementById("cart-count");
+
+            itemsList.innerHTML = "";
+
+            cart.forEach(item => {
+                const li = document.createElement("li");
+                li.textContent = `${item.name} — $${item.price.toFixed(2)}`;
+                itemsList.appendChild(li);
+            });
+
+            totalDisplay.textContent = total.toFixed(2);
+            countDisplay.textContent = cart.length;
+        }
+    </script>
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Blossom Flower Shop</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #fff7fb;
+            color: #333;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px;
+            background: #ffb6c1;
+            color: white;
+        }
+
+        .contact-section {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .contact-section h2 {
+            text-align: center;
+            font-size: 2rem;
+            color: #d14f79;
+        }
+
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .contact-form, .contact-info {
+            flex: 1 1 400px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        button {
+            margin-top: 20px;
+            width: 100%;
+            padding: 12px;
+            border: none;
+            background: #d14f79;
+            color: white;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #b43f66;
+        }
+
+        .contact-info h3 {
+            color: #d14f79;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+            <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloom & Blossom | Contact Us</title></div>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: #fff6f9;
+            color: #333;
+        }
+
+        header {
+            background: #ffb7c5;
+            padding: 20px;
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #e65a79;
+            margin-bottom: 10px;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .info-box {
+            flex: 1;
+            min-width: 250px;
+            background: #ffe2ea;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .info-box h3 {
+            margin-top: 0;
+            color: #d84a67;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: 600;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ffb7c5;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        textarea {
+            height: 120px;
+            resize: none;
+        }
+
+        button {
+            margin-top: 15px;
+            background: #e65a79;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #d24969;
+        }
+
+        footer {
+            text-align: center;
+            margin: 40px 0 20px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+<header>🌸 Bloom & Blossom – Contact Us</header>
+<div class="container">
+    <div class="contact-info">
+        <div class="info-box">
+            <h3>📍 Address</h3>
+            <p>123 Blossom Street<br>Roseville, FL 32901</p>
+        </div>
+    <div class="info-box">
+            <h3>📞 Phone</h3>
+            <p>(555) 123-4567</p>
+            <h3>📧 Email</h3>
+            <p>hello@bloomandblossom.com</p>
+        </div>
+
+        <div class="info-box">
+            <h3>⏰ Hours</h3>
+            <p>Mon–Fri: 9am – 6pm<br>Sat: 10am – 4pm<br>Sun: Closed</p>
+        </div>
+       </div>
+
+    <h2>Send Us a Message</h2>
+
+    <form id="contactForm">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" required>
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" required>
+
+        <label for="message">Message</label>
+        <textarea id="message" required></textarea>
+
+        <button type="submit">Send Message</button>
+    </form>
+
+</div>
+
+<footer>© 2025 Bloom & Blossom Flower Shop</footer>
+
+<script>
+    // Basic form handler
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+        alert("Thank you for your message — we'll get back to you soon!");
+        this.reset();
+    });
+</script>
+
+</body>
+</html>
+
+
+
